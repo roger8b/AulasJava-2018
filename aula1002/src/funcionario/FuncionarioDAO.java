@@ -99,5 +99,35 @@ public class FuncionarioDAO extends BancoDados{
         }
         return list;
     }
+    
+    public void atualizarSalarioFuncionario(int id, double salario){
+        Connection connection = conectar();
+        String query = "UPDATE `funcionario` SET `salario` = ? WHERE `funcionario`.`id` = ?" ;
+        try {
+            PreparedStatement ps = (PreparedStatement) connection.prepareStatement(query);
+            ps.setDouble(1,salario);
+            ps.setInt(2, id);
+            ps.executeUpdate();
+            System.out.println("Dados Atualizados com sucesso");
+            consultarFuncionario(id);
+            desconectar(connection);
+        } catch (Exception e) {
+            System.out.println("Erro ao atualizar o salario do funcionario");
+        }
+    }
+    
+    public void apagarFuncionario(int id){
+        Connection connection = conectar();
+        String query = "DELETE FROM `funcionario` WHERE `funcionario`.`id` = ?" ;
+        try {
+            PreparedStatement ps = (PreparedStatement) connection.prepareStatement(query);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            System.out.println("Dados Atualizados com sucesso");
+            desconectar(connection);
+        } catch (Exception e) {
+            System.out.println("Erro ao atualizar o salario do funcionario");
+        }
+    }
 
 }

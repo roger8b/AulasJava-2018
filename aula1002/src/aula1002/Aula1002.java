@@ -22,12 +22,10 @@ public class Aula1002 {
         funcionario.setSalario((float) 1000.50);
         
         //fdao.inserirFuncionario(funcionario);
-        
         listaDeFuncionarios(fdao);
-        
-        
-        
-        
+        fdao.apagarFuncionario(1);
+        listaDeFuncionarios(fdao);
+        //fdao.atualizarSalarioFuncionario(1, 105.10);
     }
 
     private static void listaDeFuncionarios(FuncionarioDAO fdao) {
